@@ -64,7 +64,21 @@ namespace StringCalculator.Tests
         public void AddCustomSeparatorTest()
         {
             var calc = new Calculator();
-            Assert.AreEqual(4, calc.Add("//$1001\n2,2"));
+            Assert.AreEqual(6, calc.Add("//$1001\n2,2$2"));
+        }
+
+        [TestMethod()]
+        public void AddCustomSeparatorLongerThan1Test()
+        {
+            var calc = new Calculator();
+            Assert.AreEqual(6, calc.Add("//$%1001\n2,2$%2"));
+        }
+
+        [TestMethod()]
+        public void AddFewCustomSeparatorsTest()
+        {
+            var calc = new Calculator();
+            Assert.AreEqual(8, calc.Add("//[$%][!]1001\n2,2$%2!2"));
         }
     }
 }
